@@ -34,4 +34,5 @@ class ContactMailable extends Mailable
                     ->markdown('contact::contact.email')
                     ->with(['data'=>$this->mailData]);
     }
+
 }

@@ -33,7 +33,8 @@ class SendEmailJob implements ShouldQueue
      */
     public function handle()
     {
-        $explodedEmails = explode(',', $this->details['email_to']);
+        $emails = str_replace("\r\n",",", $this->details['email_to']);
+        $explodedEmails = explode(',', $emails);
 
         Mail::to($explodedEmails)->send(new ContactMailable($this->details));
 
