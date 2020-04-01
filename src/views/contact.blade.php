@@ -17,7 +17,7 @@
 <body>
 
 <div class="content">
-    <h2 style="color: white; text-decoration: underline; font-weight: bolder;">Contact</h2>
+    <h2 style="color: white; text-decoration: underline; font-weight: bolder;">PONDIT Email Sender</h2>
 
     <form method="post" action="{{ route('contact') }}" enctype="multipart/form-data">
         @csrf
