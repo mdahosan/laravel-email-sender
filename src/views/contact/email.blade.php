@@ -6,6 +6,12 @@
 {{--            ![Some option text][logo]--}}
 
 {{--            [logo]: {{asset('/logo.png')}} "Logo"--}}
+
+
+            <p align="center">
+                <img src="https://pondit.com/ui/frontend/img/logo.png" alt="logo" width="200">
+            </p>
+
             PONDIT.COM
         @endcomponent
     @endslot
