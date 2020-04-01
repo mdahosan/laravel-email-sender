@@ -22,7 +22,7 @@
     <form method="post" action="{{ route('contact') }}" enctype="multipart/form-data">
         @csrf
         <fieldset>
-            <legend>Email Sender</legend>
+            <legend>Email Sender Form</legend>
             <input type="text" name="sender_name"  required placeholder="Enter Sender Name"><br><br>
             <input type="email" name="email_from" id="" placeholder="Enter From Email"><br><br>
             <textarea name="email_to" id="" cols="77" rows="3" placeholder="Enter To Emails"></textarea><br><br>
