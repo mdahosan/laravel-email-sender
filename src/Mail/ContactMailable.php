@@ -2,10 +2,12 @@
 
 namespace Pondit\Contact\Mail;
 
+use Exception;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 
 class ContactMailable extends Mailable
 {
@@ -33,6 +35,11 @@ class ContactMailable extends Mailable
                     ->replyTo($this->mailData['reply_mail'])
                     ->markdown('contact::contact.email')
                     ->with(['data'=>$this->mailData]);
+    }
+
+    public function failed(Exception $exception)
+    {
+        Log::info('failed');
     }
 
 }

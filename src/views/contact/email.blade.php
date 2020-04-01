@@ -9,7 +9,7 @@
 
 
             <p align="center">
-                <img src="https://pondit.com/ui/frontend/img/logo.png" alt="logo" width="200">
+                <img src="https://pondit.com/ui/frontend/img/logo.png" alt="logo" width="150">
             </p>
 
             PONDIT.COM
