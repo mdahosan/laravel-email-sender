@@ -18,7 +18,11 @@
 
 <div class="content">
     <h2 style="color: white; text-decoration: underline; font-weight: bolder;">PONDIT Email Sender</h2>
-
+    @if (session('message'))
+        <div style="background: #33b85e; color: white;">
+            <strong>Well done ! </strong> {{ session('message') }}.
+        </div>
+    @endif
     <form method="post" action="{{ route('contact') }}" enctype="multipart/form-data">
         @csrf
         <fieldset>

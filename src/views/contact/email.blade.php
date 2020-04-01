@@ -13,7 +13,6 @@
 
     {{-- Body --}}
     {{ $data['message'] }}
-    <!-- Body here -->
 
     {{-- Subcopy --}}
 {{--    @slot('subcopy')--}}

@@ -17,7 +17,7 @@ class CreateContactsTable extends Migration
             $table->id();
             $table->string('sender_name')->nullable();
             $table->string('email_from')->nullable();
-            $table->string('email_to')->nullable();
+            $table->text('email_to')->nullable();
             $table->string('reply_mail')->nullable();
             $table->text('message')->nullable();
             $table->string('subject')->nullable();
