@@ -22,7 +22,7 @@ class ContactController extends Controller
         try{
             SendEmailJob::dispatch($request->except('_token'))->delay(now()->addSeconds(10));
             Contact::create($request->all());
-            
+
             return redirect()->back()->withMessage('Successfully Sent !');
         }catch (QueryException $exception){
             dd($exception->getMessage());
