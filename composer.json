@@ -1,0 +1,19 @@
+{
+    "name": "pondit/contact",
+    "description": "this will send single or bulk email to contact email and save contact to database",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "mdahosanhabib",
+            "email": "cseahosan@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Pondit\\Contact\\": "src/"
+        }
+    }
+}
