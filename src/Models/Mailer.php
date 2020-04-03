@@ -1,11 +1,14 @@
 <?php
 
-namespace Pondit\Contact\Models;
+namespace Pondit\Mailer\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Contact extends Model
+class Mailer extends Model
 {
+
+    protected $table = 'emails';
+
     protected $fillable = [
         'sender_name',
         'email_from',
@@ -14,7 +17,8 @@ class Contact extends Model
         'subject',
         'introduction',
         'thanks_text',
-        'message'
+        'message',
+        'total_emails'
     ];
 
 }

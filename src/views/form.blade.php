@@ -17,13 +17,13 @@
 <body>
 
 <div class="content">
-    <h2 style="color: white; text-decoration: underline; font-weight: bolder;">PONDIT Email Sender</h2>
+    <h2 style="color: white; text-decoration: underline; font-weight: bolder;">PONDIT Emailer</h2>
     @isset ($message)
         <div style="background: #33b85e; color: white;">
             <strong>Well done ! </strong> {{ $message }}.
         </div>
     @endisset
-    <form method="post" action="{{ route('contact') }}" enctype="multipart/form-data">
+    <form method="post" action="{{ route('mailer') }}" enctype="multipart/form-data">
         @csrf
         <fieldset>
             <legend>Email Sender Form</legend>
@@ -41,6 +41,14 @@
 
     </form>
 </div>
+
+<script src="//cdn.ckeditor.com/4.5.11/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('message', {
+        uiColor: '#9AB8F3'
+    });
+</script>
+
 
 </body>
 </html>

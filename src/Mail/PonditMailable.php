@@ -1,6 +1,6 @@
 <?php
 
-namespace Pondit\Contact\Mail;
+namespace Pondit\Mailer\Mail;
 
 use Exception;
 use Illuminate\Bus\Queueable;
@@ -9,9 +9,10 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 
-class ContactMailable extends Mailable
+class PonditMailable extends Mailable
 {
     use Queueable, SerializesModels;
+
     public $mailData;
     /**
      * Create a new message instance.
@@ -30,16 +31,17 @@ class ContactMailable extends Mailable
      */
     public function build()
     {
-        return $this->from($this->mailData['email_from'], $this->mailData['sender_name'])
-                    ->subject($this->mailData['subject'])
-                    ->replyTo($this->mailData['reply_mail'])
-                    ->markdown('contact::contact.email')
-                    ->with(['data'=>$this->mailData]);
+
+        return  $this->from($this->mailData['email_from'], $this->mailData['sender_name'])
+                ->subject($this->mailData['subject'])
+                ->replyTo($this->mailData['reply_mail'])
+                ->markdown('mailer::emails.promotion')
+                ->with(['data'=>$this->mailData]);
     }
 
     public function failed(Exception $exception)
     {
-        Log::info('failed');
+        Log::error($exception->getMessage());
     }
 
 }

@@ -1,14 +1,17 @@
 <?php
 
-namespace Pondit\Contact\Jobs;
+namespace Pondit\Mailer\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
-use Pondit\Contact\Mail\ContactMailable;
+use Pondit\Mailer\Mail\PonditMailable;
+use Exception;
+
 
 class SendEmailJob implements ShouldQueue
 {
@@ -35,8 +38,13 @@ class SendEmailJob implements ShouldQueue
     {
         $emails = str_replace("\r\n",",", $this->details['email_to']);
         $explodedEmails = explode(',', $emails);
-
-        Mail::to($explodedEmails)->send(new ContactMailable($this->details));
+        Mail::to($explodedEmails)->send(new PonditMailable($this->details));
 
     }
+
+    public function failed(Exception $e)
+    {
+        Log::error($e->getMessage());
+    }
+
 }

@@ -1,24 +1,22 @@
 <?php
 
-namespace Pondit\Contact\Http\Controllers;
+namespace Pondit\Mailer\Http\Controllers;
 
 
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\Session\Session;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Log;
-use Pondit\Contact\Jobs\SendEmailJob;
-use Pondit\Contact\Mail\ContactMailable;
-use Pondit\Contact\Models\Contact;
+use Pondit\Mailer\Mail\PonditMailable;
+use Pondit\Mailer\Models\Mailer;
 use Illuminate\Support\Facades\Mail;
 
 
-class ContactController extends Controller
+class MailerController extends Controller
 {
+
     public function index()
     {
-        return view('contact::contact');
+        return view('mailer::form');
     }
 
     public function send(Request $request)
@@ -33,14 +31,16 @@ class ContactController extends Controller
                 $email = trim($email);
                 Mail::to($email)
 //                    ->cc('mdahosanhabib@outlook.com')
-                    ->later($when, new ContactMailable($data));
+                    ->later($when, new PonditMailable($data));
                 $i += 1;
             }
 
 //            SendEmailJob::dispatch($request->except('_token'))->delay(now()->addSeconds(10));
             $data['email_to'] = $commaSeparatedEmails;
-            Contact::create($data);
-            return view('contact::contact', ['message'=>'Success !']);
+            $data['total_emails'] = count($emailArray);
+            Mailer::create($data);
+
+            return view('mailer::form', ['message'=>'Success !']);
 
         }catch (QueryException $exception){
             dd($exception->getMessage());

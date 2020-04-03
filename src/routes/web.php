@@ -1,10 +1,10 @@
 <?php
 
-Route::group(['namespace'=> 'Pondit\Contact\Http\Controllers'], function (){
+Route::group(['namespace'=> 'Pondit\Mailer\Http\Controllers'], function (){
 
-    Route::get('/contact', 'ContactController@index');
+    Route::get('/mailer', 'MailerController@index');
 
-    Route::post('contact', 'ContactController@send')->name('contact');
+    Route::post('mailer', 'MailerController@send')->name('mailer');
 });
 
 

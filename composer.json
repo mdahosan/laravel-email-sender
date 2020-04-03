@@ -1,5 +1,5 @@
 {
-    "name": "pondit/contact",
+    "name": "pondit/mailer",
     "description": "this will send single or bulk email to contact email and save contact to database",
     "type": "library",
     "license": "MIT",
@@ -13,13 +13,13 @@
     "require": {},
     "autoload": {
         "psr-4": {
-            "Pondit\\Contact\\": "src/"
+            "Pondit\\Mailer\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Pondit\\Contact\\ContactServiceProvider"
+                "Pondit\\Mailer\\MailerServiceProvider"
             ]
         }
     }
